@@ -31,7 +31,7 @@ export async function initializeMap() {
   longitude /= 1000000;
   latitude /= 1000000;
   // Initialize the map
-  mapboxgl.accessToken = "";
+  mapboxgl.accessToken = "pk.eyJ1IjoibWluaHBoYW1ia3U1MTUxIiwiYSI6ImNsbDlnYjF3YjFqbzAzZW8xcXBwdGpreWUifQ.1MJp33ncZBZleo5IIpEU4Q";
     
   var map = new mapboxgl.Map({
     container: "map",
