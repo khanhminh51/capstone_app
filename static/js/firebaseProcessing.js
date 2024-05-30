@@ -3,6 +3,15 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/fireba
 
 // Firebase configuration
 const firebaseConfig = {
+  apiKey: "AIzaSyD404wKaLURJrhck0XMSLtvpC2KR4MfMZk",
+  authDomain: "capstone-afdd7.firebaseapp.com",
+  databaseURL:
+    "https://capstone-afdd7-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "capstone-afdd7",
+  storageBucket: "capstone-afdd7.appspot.com",
+  messagingSenderId: "272674976492",
+  appId: "1:272674976492:web:7fe169ee4dd179662febc9",
+  measurementId: "G-E1WZNW1GL6",
 
 };
 // Initialize Firebase
