@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="{{url_for('static', filename = 'css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename = 'css/mainstyle.css')}}" rel="stylesheet">
+        <!-- Include Mapbox CSS -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Set the map container size */
+        #map {
+            width: 100%;
+            height: 400px; /* Adjust height as needed */
+        }
+        p{
+            margin: 0 !important;
+        }
+    </style>
+    <title>Real-time Image Classification</title>   
+</head>
+<body>
+    <!-- Begin Header -->
+    <div class="layout">
+        <div class="header">
+            <nav class="navbar navbar-expand-lg bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand brand-title" href="/">Future Farm</a>
+                    <div class="navbar">
+                        <div class="navbar-item nav-live">
+                            <a class="nav-link" href="/">Live</a>
+                        </div>
+                        <div class="navbar-item">
+                            <a class="nav-link" href="/result">Result</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- End Header -->
+        <!-- Begin Content -->
+        <div class="container-content">
+            <div class="row">
+                <div class="col-sm-6 livestream">
+                    <!--<img style="text-align:center;" src="{{url_for('image_feed')}}">-->
+                    <img style="text-align:center;" src="https://cdn.tgdd.vn/Files/2021/07/14/1368126/y-nghia-va-cach-trung-bay-hoa-hai-duong-phong-thuy-mang-lai-giau-sang-phu-quy-202107141712550992.jpg"></a>
+                </div>
+                <div class="col-sm-6 mapbox">
+                    <!-- Map container -->
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row more-data">
+            <div class="col-sm-2 battery">
+                <div class="battery-item">
+                    <div>Dung lượng pin</div>
+                    <p class="value" id="battery-value">33%</p>
+                </div>
+            </div>
+            <div class="col-sm-5 location">
+                <div class="location-item">
+                    <div>Kinh độ</div>
+                    <p class="value" id="lng-value">106.8037157</p>
+                </div>
+                <div class="location-item">
+                    <div>Vĩ độ</div>
+                    <p class="value" id="lat-value">10.8782444</p>
+                </div>
+                <div class="location-item">
+                    <div>Hướng</div>
+                    <p class="value" id="direction-value">127°</p>
+                </div>
+            </div>
+            <div class="col-sm-5 sensor">
+                <div class="sensor-item">
+                    <div>Độ cao</div>
+                    <p class="value" id="height-value">1.05m</p>
+                </div>
+                <div class="sensor-item">
+                    <div>Áp suất</div>
+                    <p class="value" id="pressure-value">1010.02mbar</p>
+                </div>
+                <div class="sensor-item">
+                    <div>Nhiệt độ</div>
+                    <p class="value" id="temperature-value">33°C</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Content -->
+    <!-- Begin JS -->
+    <script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <script type="module">
+        import { initializeMap } from "./static/js/mapbox.js";
+        const map = initializeMap();
+    </script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script type="module" src="moredata.js"></script>
+    <script type="module" src="firebaseProcessing.js"></script>
+    <script type="module">
+        import { fetchDataFromFirebase,fetchMoreDataFromFirebase } from './static/js/firebaseProcessing.js';
+        fetchDataFromFirebase();
+        fetchMoreDataFromFirebase();
+    </script>
+</body>
+</html>
